@@ -45,8 +45,8 @@ class ContactsInherit(models.Model):
             
             partner = self.env['res.partner'].browse(partner_id)
 
-            Asker_countryCode = self.env.company.vies_asker_country_code
-            Asker_CVR = self.env.company.vies_asker_vat
+            Asker_countryCode = self.env.company.vies_asker_country_code if not partner.company_id.id else partner.company_id.vies_asker_country_code
+            Asker_CVR = self.env.company.vies_asker_vat if not partner.company_id.id else partner.company_id.vies_asker_vat
             
             if Asker_countryCode == False or Asker_CVR == False:
                 
